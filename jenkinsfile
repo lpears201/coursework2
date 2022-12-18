@@ -22,4 +22,10 @@ node {
             app.push("latest")
         }
     }
+    
+    stage('Delpoy') {
+       sshagent(['my-ssh-key']) {
+    sh 'ssh ubuntu@18.208.212.189 kubectl set image deployments/cw2image cw2image=lpears201:1.0'
+        }
+    }
 }
